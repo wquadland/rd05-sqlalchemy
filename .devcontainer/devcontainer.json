@@ -1,0 +1,10 @@
+{
+    "dockerComposeFile": "docker-compose.yml",
+    "workspaceFolder": "/workspace",
+    "service": "httpd",
+    "remoteUser": "vscode",
+    "forwardPorts": [],
+    "extensions": [
+        "ms-python.vscode-pylance"
+    ]
+}
