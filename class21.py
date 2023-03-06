@@ -18,8 +18,9 @@ class User(BaseModel):
     @validator('pid')
     def pid_must_be_9_digits(cls, value: int):
         # TODO: Raise ValueError if pid is not 9 digits
+        if (value < 100000000 or value > 999999999):
+            raise ValueError("PID is not 9 digits")
         return value
-
 
 # ========================
 # SqlAlchemy
@@ -80,3 +81,13 @@ class UserService:
 # 2. Construct a UserService(session_factory())
 # 3. Register your User object using the service
 # 4. Use the get method of your service to fetch the user from database
+
+user = User(pid=730311905, first_name='Warren', last_name='Quadland')
+
+user_serivce = UserService(session_factory())
+
+user_serivce.register(user)
+
+test = user_serivce.get(730311905)
+
+print(test)
